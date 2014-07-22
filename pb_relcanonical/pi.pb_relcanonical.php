@@ -85,9 +85,11 @@ class Pb_relcanonical
   {
 	  ob_start(); 
 	  ?>
+	  
 Simply add {exp:pb_relcanonical:linkmeta strip_last_slash="yes"} in your header
 Will output <link rel='canonical' href='{the_rel_canonical_url}' />
 Set 'stip_last_slash' parameter to "yes" or "no".
+
 	  <?php
 	  $buffer = ob_get_contents();
 		
