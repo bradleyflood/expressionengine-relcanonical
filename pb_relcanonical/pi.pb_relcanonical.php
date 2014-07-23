@@ -48,7 +48,13 @@ class Pb_relcanonical
     $segmentCount = count($segments);
     
     // Check if last segment is pagination
-    $lastSegment = $segments[$segmentCount-1];
+    if( $segmentCount )
+    {
+      $lastSegment = $segments[$segmentCount-1];
+    } else {
+      $lastSegment = false;
+    }
+    
     if( preg_match('/P(\d+)/', $lastSegment) )
     {
       // Last segment is pagination, pop it off the segments array
