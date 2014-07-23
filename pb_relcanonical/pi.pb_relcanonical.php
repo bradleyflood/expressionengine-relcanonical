@@ -37,8 +37,12 @@ class Pb_relcanonical
     // Remove the query string
     $uriPop = explode('?', $uri);
     $uri = $uriPop[0];
+
+    // Strip the slashes
+    $uri = rtrim($uri, "/");
+    $uri = ltrim($uri, "/");
     
-    // Grab the segments    
+    // Grab the segments 
     $segments = explode('/', $uri);
     $segmentCount = count($segments);
     
@@ -55,7 +59,7 @@ class Pb_relcanonical
 
     // Build url
     $linkUrl  = $protocol;
-    $linkUrl .= '://' . $_SERVER['HTTP_HOST'];
+    $linkUrl .= '://' . $_SERVER['HTTP_HOST'] . '/';
     foreach ($segments as $segment)
     {
       $linkUrl .= $segment . '/';
@@ -85,7 +89,7 @@ class Pb_relcanonical
   {
 	  ob_start(); 
 	  ?>
-	  
+    
 Simply add {exp:pb_relcanonical:linkmeta strip_last_slash="yes"} in your header
 Will output <link rel='canonical' href='{the_rel_canonical_url}' />
 Set 'stip_last_slash' parameter to "yes" or "no".
