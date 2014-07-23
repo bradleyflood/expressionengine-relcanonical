@@ -44,6 +44,7 @@ class Pb_relcanonical
     
     // Grab the segments 
     $segments = explode('/', $uri);
+    $segments = array_filter($segments);
     $segmentCount = count($segments);
     
     // Check if last segment is pagination
